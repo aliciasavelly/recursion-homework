@@ -15,18 +15,20 @@ def add_numbers(nums_array)
   nums_array.pop + add_numbers(nums_array)
 end
 
-p "----------"
-p "add_numbers"
-p add_numbers([1, 2, 3, 4]) == 10
-p add_numbers([3]) == 3
-p add_numbers([-80, 34, 7]) == -39
-p add_numbers([]) == nil
+# p "----------"
+# p "add_numbers:"
+# p add_numbers([1, 2, 3, 4]) == 10
+# p add_numbers([3]) == 3
+# p add_numbers([-80, 34, 7]) == -39
+# p add_numbers([]) == nil
 
-# def factorial(n)
-#   return n if n == 1
-#   n * factorial(n - 1)
-# end
+def factorial(n)
+  return n if n == 1
+  n * factorial(n - 1)
+end
 
+# p "----------"
+# p "factorial:"
 # p factorial(4)
 
 def gamma_fnc(num)
@@ -35,9 +37,9 @@ def gamma_fnc(num)
   (num - 1) * gamma_fnc(num - 1)
 end
 
-p "----------"
-p "gamma_fnc"
-p gamma_fnc(0) == nil
-p gamma_fnc(1) == 1
-p gamma_fnc(4) == 6
-p gamma_fnc(8) == 5040
+# p "----------"
+# p "gamma_fnc:"
+# p gamma_fnc(0) == nil
+# p gamma_fnc(1) == 1
+# p gamma_fnc(4) == 6
+# p gamma_fnc(8) == 5040
