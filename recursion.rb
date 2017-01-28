@@ -1,19 +1,15 @@
-require "byebug"
+# require "byebug"
 
-# class Array
-#   def deep_dup
-#     out = []
-#     self.each do |el|
-#       if el.is_a?(Array)
-#         out << el.deep_dup
-#       else
-#         out << el
-#       end
-#     end
-#
-#     out
-#   end
-# end
+class Array
+  def deep_dup
+    out = []
+    self.each do |el|
+      el.is_a?(Array) ? out << el.deep_dup : out << el
+    end
+
+    out
+  end
+end
 
 # p [1, [2], [3, 7, 8, [4]]].deep_dup
 
