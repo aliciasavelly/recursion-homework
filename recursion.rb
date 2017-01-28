@@ -1,48 +1,30 @@
 # require "byebug"
 
-class Array
-  def deep_dup
-    out = []
-    self.each do |el|
-      el.is_a?(Array) ? out << el.deep_dup : out << el
-    end
-
-    out
-  end
-end
-
-# p [1, [2], [3, 7, 8, [4]]].deep_dup
-
 def range(start, last)
   return [] if last < start
   return [last] if start == last
   [start] + range(start + 1, last)
 end
 
-
 # p range(2, 10)
 # p range(10, 2)
-
 
 def recursive_sum(arr)
   return arr.first if arr.length == 1
   arr.first + recursive_sum(arr[1..-1])
-
 end
 
 # p recursive_sum([1,2,3,4])
 
-
 def iterative_sum(arr)
   arr.inject(:+)
 end
-#
+
 # p iterative_sum([1,2,3,4])
 
 def recursion_one(base, power)
   return 1 if power == 0
   base * recursion_one(base, power - 1)
-
 end
 
 # p recursion_one(2, 4)
@@ -59,12 +41,9 @@ end
 
 # p recursion_two(2, 4)
 
-
 def ifibonacci(num)
   base = [0,1]
-  (num-2).times do
-    base << base[-2] + base[-1]
-  end
+  (num-2).times { base << base[-2] + base[-1] }
   base
 end
 
@@ -79,21 +58,17 @@ end
 
 # p rfibonacci(6)# == [0,1,1,2,3,5]
 # p ifibonacci(6) == [0,1,1,2,3,5]
+
 class Array
 
   def deep_dup
     out = []
-
     self.each do |el|
-      if el.is_a?(Array)
-        out << el.deep_dup
-      else
-        out << el
-      end
+      el.is_a?(Array) ? out << el.deep_dup : out << el
     end
+
     out
   end
-
 
   def isubsets
     result = [[]]
@@ -214,9 +189,11 @@ def bsearch(array, target)
 
 end
 
-p bsearch([1, 2, 3], 1) == 0
-p bsearch([1, 2, 3], 2) == 1
-p bsearch([1, 2, 3], 3) == 2
-p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 22) == 7
-p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 3) == 1
-p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 5) == 3
+# p [1, [2], [3, 7, 8, [4]]].deep_dup
+
+# p bsearch([1, 2, 3], 1) == 0
+# p bsearch([1, 2, 3], 2) == 1
+# p bsearch([1, 2, 3], 3) == 2
+# p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 22) == 7
+# p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 3) == 1
+# p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 5) == 3
