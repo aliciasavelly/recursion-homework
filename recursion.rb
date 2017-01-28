@@ -76,19 +76,8 @@ class Array
       temp_array = result.map {|arr| arr + [num]}
       result += temp_array
     end
-    result
-  end
 
-  def isubsets2
-    out = []
-    # self.each do |el|
-    #   if el >=0
-    #     out << self.drop(1)
-    #   else
-    #     out << self.combination(self.length).to_a
-    #   end
-    # end
-    # out
+    result
   end
 
   def rsubsets
@@ -99,24 +88,6 @@ class Array
     end
     smaller_subset + new_subset
   end
-
-  # def rpermutation
-  #   out = []
-  #   if self.length == 2
-  #     out << self
-  #     out << self.rotate
-  #     return out
-  #   end
-  #   # debugger
-  #
-  #   # debugger
-  #   current_array = self[1..-1].rpermutation.to_a
-  #   current_array.each do |num|
-  #     out << current_array
-  #   end
-  #   # debugger
-  #   [self[0]] + out
-  # end
 
   def rpermutation
     if self.length <= 1
@@ -134,23 +105,6 @@ class Array
     result
   end
 
-  def ipermutation
-    out = []
-    self.each do |el|
-      count = self.length - 1
-      temp = self.dup
-      temp.delete(el)
-      # out << [el] + temp
-      temp.combination(self.length - 1).to_a.map {|combo| out += [el] + combo}
-
-      # until count < 0 do
-      #   out << [el] + temp.rotate(count)
-      #   count -= 1
-      # end
-    end
-    out
-  end
-
 end
 
 # ([1, [2, 2], 3, [4, [2, 3, [4, 2]]]]).deep_dup
@@ -159,24 +113,11 @@ end
 # p ([1, 2, 3, 4]).rpermutation
 # p ([1, 2, 3, 4]).ipermutation
 
-
 def bsearch(array, target)
   return nil if array.empty?
   middle_pos = array.length / 2
   middle_el = array[middle_pos]
-  # return middle_pos if middle_el == target
-  #
-  # if middle_pos > target
-  #   position = bsearch(array.take(middle_pos), target)
-  #   # return position + middle_pos + 1
-  # else
-  #   position = bsearch(array.drop(middle_pos + 1), target)
-  #   if position.nil?
-  #     return nil
-  #   else
-  #     return position + middle_pos + 1
-  #   end
-  # end
+
   case target <=> array[middle_pos]
   when -1
     bsearch(array.take(middle_pos), target)
@@ -191,9 +132,9 @@ end
 
 # p [1, [2], [3, 7, 8, [4]]].deep_dup
 
-# p bsearch([1, 2, 3], 1) == 0
-# p bsearch([1, 2, 3], 2) == 1
-# p bsearch([1, 2, 3], 3) == 2
-# p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 22) == 7
-# p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 3) == 1
-# p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 5) == 3
+p bsearch([1, 2, 3], 1) == 0
+p bsearch([1, 2, 3], 2) == 1
+p bsearch([1, 2, 3], 3) == 2
+p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 22) == 7
+p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 3) == 1
+p bsearch([1, 3, 4, 5, 7, 11, 14, 22], 5) == 3
